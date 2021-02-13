@@ -1,4 +1,5 @@
 ---
-- src: geerlingguy.packer_rhel
-- src: geerlingguy.packer-debian
-- src: geerlingguy.nfs
+- src: git+http://gitea.johnpetro.xyz/ansible/packer-rhel.git
+- src: git+http://gitea.johnpetro.xyz/ansible/packer-debian.git
+- src: git+http://gitea.johnpetro.xyz/ansible/Geerlingguy.Nfs.git
+
