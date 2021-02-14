@@ -11,23 +11,21 @@
       when:
         - ansible_os_family == 'RedHat'
         - ansible_distribution_major_version | int == 6
-
-  roles:
-    - role: geerlingguy.nfs
-
-    - role: geerlingguy.packer_rhel
-      when: ansible_os_family == 'RedHat'
-
-    - role: geerlingguy.packer-debian
-      when: ansible_os_family == 'Debian'
-
-  tasks:
     - name: Install some helpful utilities.
       apt:
         name:
-          - git
           - wget
           - curl
           - vim
         state: present
+      when: ansible_os_family == 'Debian'
+
+
+  roles:
+    - role: Geerlingguy.Nfs
+
+    - role: packer-rhel
+      when: ansible_os_family == 'RedHat'
+
+    - role: packer-debian
       when: ansible_os_family == 'Debian'

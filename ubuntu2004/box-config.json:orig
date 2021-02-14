@@ -91,6 +91,11 @@
       {
         "output": "builds/{{.Provider}}-ubuntu2004.box",
         "type": "vagrant"
+      },
+      {
+        "type": "vagrant-cloud",
+        "box_tag": "geerlingguy/ubuntu2004",
+        "version": "{{user `version`}}"
       }
     ]
   ]
