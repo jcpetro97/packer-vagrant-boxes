@@ -15,10 +15,10 @@
       "headless": true,
       "http_directory": "http",
       "iso_urls": [
-        "Rocky-8.5-x86_64-minimal.iso",
-        "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-minimal.iso"
+        "Rocky-8.5-x86_64-dvd1.iso",
+        "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-dvd1.iso"
       ],
-      "iso_checksum": "sha256:4eb2ae6b06876205f2209e4504110fe4115b37540c21ecfbbc0ebc11084cb779",
+      "iso_checksum": "sha256:0081f8b969d0cef426530f6d618b962c7a01e71eb12a40581a83241f22dfdc25",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -68,7 +68,7 @@
       },
       {
         "type": "vagrant-cloud",
-        "box_tag": "jcpetro97/centos8",
+        "box_tag": "jcpetro97/rocky8",
         "version": "{{user `version`}}"
       }
     ]
