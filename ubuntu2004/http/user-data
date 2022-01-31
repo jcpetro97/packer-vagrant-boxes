@@ -1,11 +1,14 @@
 #cloud-config
 autoinstall:
   version: 1
-  refresh-installer:
-    update: yes
+  # refresh-installer:
+  #   update: yes
+  apt:
+    geoip: true
+    preserve_sources_list: false 
   identity:
     hostname: ubuntu2004
-    password: '$6$rounds=4096$49Sb/C2ayO$vk0e5HaskiydCp3AcCNSGhLrbWntoeS.buD4Br5JvPccEHu5YujC6a28Qz1S/4NgObNWzT14uNMwgeyXfQLSC/'
+    password: '$6$rounds=4096$Ozm55bnyQpdXRkK$Ot65.Yi6b5CQwpBD4Rq0HoJT2fB572Ar7BGYft7qkDTAeUce62A2rWhXv3LyVPUHs/vMDm8S3rr7r8JD3GudC.'
     username:  vagrant
   keyboard: 
     layout: en
