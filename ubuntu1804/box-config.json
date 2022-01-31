@@ -56,6 +56,7 @@
       "disk_size": 51200,
       "guest_os_type": "Ubuntu_64",
       "headless": true,
+      "vrdp_bind_address": "0.0.0.0",
       "http_directory": "http",
       "iso_urls": [
         "ubuntu-18.04.6-server-amd64.iso",

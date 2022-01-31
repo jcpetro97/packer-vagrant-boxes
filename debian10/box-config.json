@@ -49,6 +49,7 @@
       "disk_size": 51200,
       "guest_os_type": "Debian_64",
       "headless": true,
+      "vrdp_bind_address": "0.0.0.0",
       "http_directory": "http",
       "iso_urls": [
         "debian-10.6.0-amd64-xfce-CD-1.iso",
