@@ -2,28 +2,6 @@
   "variables": {
     "version": ""
   },
-  "provisioners": [
-    {
-      "type": "shell",
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "script": "scripts/ansible.sh"
-    },
-    {
-      "type": "shell",
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "script": "scripts/setup.sh"
-    },
-    {
-      "type": "ansible-local",
-      "playbook_file": "../shared/main.yml",
-      "galaxy_file": "../shared/requirements.yml"
-    },
-    {
-      "type": "shell",
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "script": "scripts/cleanup.sh"
-    }
-  ],
   "builders": [
     {
       "type": "virtualbox-iso",
@@ -52,14 +30,15 @@
       "vrdp_bind_address": "0.0.0.0",
       "http_directory": "http",
       "iso_urls": [
-        "debian-10.6.0-amd64-xfce-CD-1.iso",
-        "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.6.0-amd64-xfce-CD-1.iso"
+        "debian-10.12.0-amd64-xfce-CD-1.iso",
+        "https://cdimage.debian.org/cdimage/archive/10.12.0/amd64/iso-cd/debian-10.12.0-amd64-xfce-CD-1.iso"
       ],
-      "iso_checksum": "sha256:fff31b94f193e094400281d3f01589456562c8017f11cb1744fc325d83ba2ed4",
+      "iso_checksum": "sha256:53a7622329f92fed16e3d183edafc70de9e2ef36e2ba6cd02eda38ad7425ab36",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
-      "ssh_wait_timeout": "1800s",
+      "ssh_timeout": "45m",
+      "ssh_handshake_attempts": "1600",
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
@@ -69,7 +48,19 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "1024"
+          "2048"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--graphicscontroller",
+          "vmsvga"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--vram",
+          "128"
         ],
         [
           "modifyvm",
@@ -80,6 +71,28 @@
       ]
     }
   ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "script": "scripts/ansible.sh"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "script": "scripts/setup.sh"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "../shared/main.yml",
+      "galaxy_file": "../shared/requirements.yml"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "script": "scripts/cleanup.sh"
+    }
+  ],
   "post-processors": [
     [
       {
@@ -88,7 +101,7 @@
       },
       {
         "type": "vagrant-cloud",
-        "box_tag": "geerlingguy/debian10",
+        "box_tag": "jcpetro97/debian10",
         "version": "{{user `version`}}"
       }
     ]
