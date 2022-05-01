@@ -37,7 +37,7 @@
       "boot_wait": "5s",
       "disk_size": 51200,
       "guest_os_type": "Ubuntu_64",
-      "headless": false,
+      "headless": true,
       "vrdp_bind_address": "0.0.0.0",
       "http_directory": "http",
       "iso_urls": [
