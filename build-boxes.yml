@@ -6,8 +6,9 @@
   vars:
     boxes:
       - centos7
+      - debian10
+      - debian11
       - rocky8
-      - ubuntu1804
       - ubuntu2004
       - ubuntu2204
     versions: {}
