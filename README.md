@@ -1,7 +1,4 @@
-# NEED TO UPDATE THIS PART AS I HAVE MADE A BUNCH OF CHANGES
-
-
-### JOhn Petro's Vagrant Box Builds
+### John Petro's Vagrant Box Builds
 
 
 This project contains the Packer build configurations for all of John Petro's Vagrant Boxes. Each box builds a minimal base box for use with VirtualBox. Available boxes include:
