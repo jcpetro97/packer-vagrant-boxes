@@ -9,7 +9,7 @@ This project contains the Packer build configurations for all of John Petro's Va
   - [jcpetro97/ubuntu2204](https://app.vagrantup.com/jcpetro97/boxes/ubuntu2204) - [`ubuntu2204` directory](ubuntu2204/)
   - [jcpetro97/ubuntu2004](https://app.vagrantup.com/jcpetro97/boxes/ubuntu2004) - [`ubuntu2004` directory](ubuntu2004/)
   - [jcpetro97/ubuntu1804](https://app.vagrantup.com/jcpetro97/boxes/ubuntu1804) - [`ubuntu1804` directory](ubuntu1804/)
-  - [jcpetro97/rockylinux8](https://app.vagrantup.com/jcpetro97/boxes/rockylinux8) - [`rockylinux8` directory](rockylinux8/)
+  - [jcpetro97/rocky8](https://app.vagrantup.com/jcpetro97/boxes/rocky8) - [`rocky8` directory](rockylinux8/)
   - [jcpetro97/centos7](https://app.vagrantup.com/jcpetro97/boxes/centos7) - [`centos7` directory](centos7/)
   - [jcpetro97/debian10](https://app.vagrantup.com/jcpetro97/boxes/debian10) - [`debian10` directory](debian10/)
 
