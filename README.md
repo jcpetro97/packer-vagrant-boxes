@@ -66,6 +66,6 @@ MIT
 
 ## Author
 
-These configs are maintained by John Petro.  
+These configs are maintained by [John Petro](https://github.com/jcpetro97).  
 
 This repository was based off the the repository created by [Jeff Geerling](https://www.jeffgeerling.com), author of [Ansible for DevOps](https://www.ansiblefordevops.com).
