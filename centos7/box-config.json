@@ -36,6 +36,18 @@
         [
           "modifyvm",
           "{{.Name}}",
+          "--graphicscontroller",
+          "vmsvga"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--vram",
+          "128"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
           "--cpus",
           "2"
         ]
