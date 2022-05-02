@@ -2,6 +2,6 @@
 */output-virtualbox-iso/*
 *.box
 iso/*
-.vagrant/
+.vagrant/*
 centos6/roles/*
 ubuntu2004/*.log
