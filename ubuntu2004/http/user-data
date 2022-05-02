@@ -57,7 +57,6 @@ autoinstall:
     - chmod 440 /target/etc/sudoers.d/vagrant
 
   packages:
-    - build-essential
     - make
     - gcc
     - perl
