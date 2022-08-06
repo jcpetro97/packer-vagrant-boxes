@@ -9,6 +9,7 @@
       - debian10
       - debian11
       - rocky8
+      - rocky9
       - ubuntu2004
       - ubuntu2204
     versions: {}
