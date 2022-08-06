@@ -2,12 +2,11 @@
   "variables": {
     "version": ""
   },
-  
   "builders": [
     {
       "type": "virtualbox-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg rd.live.check quiet<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 51200,
@@ -16,18 +15,19 @@
       "vrdp_bind_address": "0.0.0.0",
       "http_directory": "http",
       "iso_urls": [
-        "Rocky-8.6-x86_64-dvd1.iso",
-        "http://mirrors.rit.edu/rocky/8.6/isos/x86_64/Rocky-8.6-x86_64-dvd1.iso"
+        "Rocky-9.0-x86_64-dvd.iso",
+        "http://mirrors.rit.edu/rocky/9/isos/x86_64/Rocky-9.0-x86_64-dvd.iso"
       ],
-      "iso_checksum": "sha256:0081f8b969d0cef426530f6d618b962c7a01e71eb12a40581a83241f22dfdc25",
+      "iso_checksum": "sha256:55dbf904b35969be9f6d96f042b7470d1a3cb5c953bba47ab8f79740560d8a8d",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
-      "ssh_wait_timeout": "50m",
+      "ssh_wait_timeout": "45m",
+      "ssh_handshake_attempts": "1600",
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "packer-rocky-8-x86_64",
+      "vm_name": "packer-rocky-9-x86_64",
       "vboxmanage": [
         [
           "modifyvm",
@@ -38,19 +38,31 @@
         [
           "modifyvm",
           "{{.Name}}",
-          "--graphicscontroller",
-          "vmsvga"
-        ],
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--vram",
-          "128"
-        ],
-        [
-          "modifyvm",
-          "{{.Name}}",
           "--cpus",
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/IsaExts/SSE4.1",
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/IsaExts/SSE4.2",
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/IsaExts/POPCNT",
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/IsaExts/CMPXCHG16B",
           "1"
         ]
       ]
@@ -74,16 +86,12 @@
       "script": "scripts/cleanup.sh"
     }
   ],
+
   "post-processors": [
     [
       {
-        "output": "builds/{{.Provider}}-centos8.box",
+        "output": "builds/{{.Provider}}-rocky9.box",
         "type": "vagrant"
-      },
-      {
-        "type": "vagrant-cloud",
-        "box_tag": "jcpetro97/rocky8",
-        "version": "{{user `version`}}"
       }
     ]
   ]
