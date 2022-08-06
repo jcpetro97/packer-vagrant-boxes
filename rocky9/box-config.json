@@ -6,7 +6,7 @@
     {
       "type": "virtualbox-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg rd.live.check quiet<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 51200,
@@ -15,41 +15,55 @@
       "vrdp_bind_address": "0.0.0.0",
       "http_directory": "http",
       "iso_urls": [
-        "CentOS-7-x86_64-Minimal-2009.iso",
-        "http://mirrors.mit.edu/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso"      ],
-      "iso_checksum": "sha256:07b94e6b1a0b0260b94c83d6bb76b26bf7a310dc78d7a9c7432809fb9bc6194a",
+        "Rocky-9.0-x86_64-dvd.iso",
+        "http://mirrors.rit.edu/rocky/9/isos/x86_64/Rocky-9.0-x86_64-dvd.iso"
+      ],
+      "iso_checksum": "sha256:55dbf904b35969be9f6d96f042b7470d1a3cb5c953bba47ab8f79740560d8a8d",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
-      "ssh_wait_timeout": "1800s",
+      "ssh_wait_timeout": "45m",
+      "ssh_handshake_attempts": "1600",
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "packer-centos-7-x86_64",
+      "vm_name": "packer-rocky-9-x86_64",
       "vboxmanage": [
         [
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "512"
-        ],
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--graphicscontroller",
-          "vmsvga"
-        ],
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--vram",
-          "128"
+          "2048"
         ],
         [
           "modifyvm",
           "{{.Name}}",
           "--cpus",
-          "2"
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/IsaExts/SSE4.1",
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/IsaExts/SSE4.2",
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/IsaExts/POPCNT",
+          "1"
+        ],
+        [
+          "setextradata",
+          "{{.Name}}",
+          "VBoxInternal/CPUM/IsaExts/CMPXCHG16B",
+          "1"
         ]
       ]
     }
@@ -76,13 +90,8 @@
   "post-processors": [
     [
       {
-        "output": "builds/{{.Provider}}-centos7.box",
+        "output": "builds/{{.Provider}}-rocky9.box",
         "type": "vagrant"
-      },
-      {
-        "type": "vagrant-cloud",
-        "box_tag": "jcpetro97/centos7",
-        "version": "{{user `version`}}"
       }
     ]
   ]
