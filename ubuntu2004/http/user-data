@@ -18,13 +18,13 @@ autoinstall:
   locale: en_US
   user-data:
     timezone: America/New_York
-  network:
-    network:
-      version: 2
-      ethernets:
-        enp0s3: 
-          dhcp4: true
-          dhcp-identifier: mac
+  # network:
+  #   network:
+  #     version: 2
+  #     ethernets:
+  #       enp0s3: 
+  #         dhcp4: true
+  #         dhcp-identifier: mac
   ssh:
     allow-pw: true
     install-server: true
@@ -56,8 +56,8 @@ autoinstall:
     - 'echo "vagrant        ALL=(ALL)       NOPASSWD: ALL" > /target/etc/sudoers.d/vagrant'
     - chmod 440 /target/etc/sudoers.d/vagrant
 
-  # packages:
-  #   - make
-  #   - gcc
-  #   - perl
-  #   - git
+  packages:
+    - make
+    - gcc
+    - perl
+    - git
