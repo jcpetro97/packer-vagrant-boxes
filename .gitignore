@@ -4,4 +4,4 @@
 iso/*
 .vagrant/*
 centos6/roles/*
-ubuntu2004/*.log
+*.log
