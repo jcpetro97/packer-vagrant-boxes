@@ -25,5 +25,5 @@
 # Build and push the new box.
 - name: Build and push the box using Packer.
   command: >
-    packer build -force -var 'version={{ new_box_version }}' box-config.json
+    PACKER=1 PACKER_LOG_PATH=./build.log packer build -force -var 'version={{ new_box_version }}' box-config.json
     chdir={{ item }}
