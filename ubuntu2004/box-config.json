@@ -54,6 +54,12 @@
       "virtualbox_version_file": ".vbox_version",
       "vm_name": "packer-ubuntu-20.04-amd64",
       "vboxmanage": [
+        [ 
+          "modifyvm", 
+          "{{.Name}}", 
+          "--firmware", 
+          "BIOS" 
+        ],
         [
           "modifyvm",
           "{{.Name}}",
